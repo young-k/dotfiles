@@ -72,22 +72,41 @@ If REPOSITORY is specified, use that."
 ))
 
 ;; Installing helm and helm-swoop
+
 (sacha/package-install 'helm)
 (sacha/package-install 'helm-swoop)
       (use-package helm
         :init
-        (progn
-          (require 'helm-config)
+        (progn 
+          (require 'helm-config) 
           (require 'helm-eshell)
           (require 'helm-files)
           (require 'helm-grep)
   (setq helm-candidate-number-limit 10)
           (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
                 helm-input-idle-delay 0.01  ; this actually updates things
+                                              ; reeeelatively quickly.
                 helm-quick-update t
                 helm-M-x-requires-pattern nil
                 helm-ff-skip-boring-files t)
-	  (helm-mode)))
+  (helm-mode))
+  :config
+      (add-to-list 'helm-completing-read-handlers-alist '(switch-to-buffer . ido)))
+
+(use-package helm-swoop
+ :bind (("C-S-s" . helm-swoop)))
+
+(defun helm-backspace ()
+  "Forward to `backward-delete-char'.
+On error (read-only), quit without selecting."
+  (interactive)
+  (condition-case nil
+      (backward-delete-char 1)
+    (error
+     (helm-keyboard-quit))))
+
+(define-key helm-map (kbd "DEL") 'helm-backspace)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 
 ;; Installing flycheck
