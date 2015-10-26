@@ -6,6 +6,8 @@
 								     
 (add-to-list 'package-archives					     
 	     '("melpa" . "http://melpa.org/packages/") t)	     
+(add-to-list 'package-archives					     
+	     '("gnu" . "http://elpa.gnu.org/packages/") t)           
 
 (package-initialize t)
 (setq package-enable-at-startup nil)
@@ -42,7 +44,7 @@ If REPOSITORY is specified, use that."
 
 ;; Installing markdown-mode
 (sacha/package-install 'markdown-mode)
-(require 'markdown-mode)
+(use-package markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -74,9 +76,9 @@ If REPOSITORY is specified, use that."
 ))
 
 ;; Installing helm and helm-swoop
+
 (sacha/package-install 'helm)
 (sacha/package-install 'helm-swoop)
-(require 'helm-swoop)
       (use-package helm
         :init
         (progn 
