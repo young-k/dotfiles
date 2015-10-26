@@ -35,8 +35,21 @@ If REPOSITORY is specified, use that."
 ;; Installing company
 (sacha/package-install 'company)
 (use-package company
-             :init
-             (company-mode t))
+  :init
+  (company-mode t))
+
+;; Installing markdown-mode
+(sacha/package-install 'markdown-mode)
+(use-package markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  
+;; Installing YA-Snippets
+(sacha/package-install 'yasnippet)
+(use-package yasnippet
+  :init
+  (yas-global-mode t))
 
 ;; Installing auto-complete
 (sacha/package-install 'auto-complete)
@@ -57,6 +70,32 @@ If REPOSITORY is specified, use that."
 (setq ac-auto-show-menu 0)
 (auto-complete-mode t)
 ))
+
+;; Installing helm and helm-swoop
+(sacha/package-install 'helm)
+(sacha/package-install 'helm-swoop)
+      (use-package helm
+        :init
+        (progn
+          (require 'helm-config)
+          (require 'helm-eshell)
+          (require 'helm-files)
+          (require 'helm-grep)
+  (setq helm-candidate-number-limit 10)
+          (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+                helm-input-idle-delay 0.01  ; this actually updates things
+                helm-quick-update t
+                helm-M-x-requires-pattern nil
+                helm-ff-skip-boring-files t)
+	  (helm-mode)))
+
+
+;; Installing flycheck
+(sacha/package-install 'flycheck)
+(sacha/package-install 'flycheck-pyflakes)
+(use-package flycheck
+:init
+(global-flycheck-mode t))
 
 
 (custom-set-variables
