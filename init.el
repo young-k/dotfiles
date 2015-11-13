@@ -16,6 +16,9 @@
 ;; Add line numbers to emacs
 (global-linum-mode t)
 
+;; Multi-line commenting
+(setq comment-style 'multi-line)
+
 ;; Asks "y-or-n" instead of asking "yes-or-no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
