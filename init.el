@@ -43,11 +43,29 @@ If REPOSITORY is specified, use that."
   :init
   (company-mode t))
 
-;; Installing solarized theme
-(sacha/package-install 'color-theme-solarized)
-(load-theme 'solarized t)
-(set-frame-parameter nil 'background-mode 'dark)
-(enable-theme 'solarized)
+;; Installing powerline
+
+(use-package      smart-mode-line-powerline-theme
+    :ensure smart-mode-line-powerline-theme)
+  (use-package smart-mode-line
+    :ensure smart-mode-line
+    :init 
+    (progn
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)
+    (sml/apply-theme 'powerline))
+    )
+
+(use-package smart-mode-line
+  :ensure smart-mode-line
+  :init 
+  (progn
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)
+    (sml/apply-theme 'powerline)
+    ))
+
+
 
 ;; Installing markdown-mode
 (sacha/package-install 'markdown-mode)
@@ -126,7 +144,11 @@ On error (read-only), quit without selecting."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(frame-background-mode (quote light)))
+ '(frame-background-mode (quote light))
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (yasnippet use-package rich-minority markdown-mode helm-swoop flycheck-pyflakes company auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
