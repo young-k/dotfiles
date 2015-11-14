@@ -13,8 +13,12 @@ to bring any printed guide)
 
 - General
   - Dijkstra's Algorithm and Other Maze Algorithms
-  - Dynamic Programming; Good Example: http://interactivepython.org/runestone/static/pythonds/Recursion/DynamicProgramming.html
   - Review Past Problems/Solutions: http://pclassic.org/problems
+  - Dynamic Programming; Good Example: http://interactivepython.org/runestone/static/pythonds/Recursion/DynamicProgramming.html
+
+	Short interlude on Dynamic Programming. Dynamic Programming can be split up into two categories - shortest path vs total number of paths.
+
+
 
 - Java
   - Stacks

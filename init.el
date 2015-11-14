@@ -13,9 +13,6 @@
 (setq user-full-name "Young Kim"
       user-mail-address "kim.thunderbird@gmail.com")
 
-;; Add line numbers to emacs
-(global-linum-mode t)
-
 ;; Multi-line commenting
 (setq comment-style 'multi-line)
 
@@ -47,7 +44,6 @@ If REPOSITORY is specified, use that."
   (company-mode t))
 
 ;; Installing powerline
-
 (use-package      smart-mode-line-powerline-theme
     :ensure smart-mode-line-powerline-theme)
   (use-package smart-mode-line
