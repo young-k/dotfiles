@@ -43,6 +43,12 @@ If REPOSITORY is specified, use that."
   :init
   (company-mode t))
 
+;; Installing company-jedi
+(sacha/package-install 'company-jedi)
+(use-package company-jedi
+  :init
+  (company-jedi t))
+
 ;; Installing powerline
 (use-package      smart-mode-line-powerline-theme
     :ensure smart-mode-line-powerline-theme)
