@@ -10,7 +10,7 @@
 (add-to-list 'load-path "~/.emacs.d/packages/org-mode/contrib/lisp") 
 (add-to-list 'load-path "~/.emacs.d/packages/org-mode/lisp")	     
 (add-to-list 'load-path "~/.emacs.d/packages/lisp")
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory)) ; Added for special powerline mode-line
 
 (require 'package)						     
 								     
@@ -29,7 +29,7 @@
 ;; Asks "y-or-n" instead of asking "yes-or-no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Set font
+;; Set font to DejaVu Sans Mono
 (when (member "DejaVu Sans Mono" (font-family-list))
   (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
 
@@ -45,22 +45,22 @@ If REPOSITORY is specified, use that."
 
 ;; Installing use-package
 (sacha/package-install 'use-package)
-(require 'use-package)
+(require 'use-package)			; Better package installation
 
 ;; Installing company
 (sacha/package-install 'company)
-(use-package company
+(use-package company			; Text completion framework
   :init
   (company-mode t))
 
 ;; Installing company-jedi
-(sacha/package-install 'company-jedi)
+(sacha/package-install 'company-jedi)	; Company for Python
 (use-package company-jedi
   :init
   (company-jedi t))
 
 ;; Taken from Aaron Bieber's Config
-(require 'init-powerline)
+(require 'init-powerline)		; Powerline mode-line
 
 ;; Installing markdown-mode
 (sacha/package-install 'markdown-mode)
@@ -124,7 +124,11 @@ On error (read-only), quit without selecting."
      (helm-keyboard-quit))))
 
 (define-key helm-map (kbd "DEL") 'helm-backspace)
-(global-set-key (kbd "M-x") 'helm-M-x)
+
+;; Special Key Bindings
+(global-set-key (kbd "M-x") 'helm-M-x)	; Basically change M-x to helm-M-x
+(global-set-key (kbd "C-s") 'helm-swoop) ; Basically change C-s to helm-swoop
+
 
 
 ;; Installing flycheck
