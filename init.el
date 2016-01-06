@@ -1,7 +1,17 @@
-(package-initialize nil)					     
+;;; package --- Summary
+
+;;; Commentary:
+
+;;;     Nothing
+
+;;; Code:
+(package-initialize nil)
+
 (add-to-list 'load-path "~/.emacs.d/packages/org-mode/contrib/lisp") 
 (add-to-list 'load-path "~/.emacs.d/packages/org-mode/lisp")	     
-(add-to-list 'load-path "~/.emacs.d/packages/lisp")		     
+(add-to-list 'load-path "~/.emacs.d/packages/lisp")
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 (require 'package)						     
 								     
 (add-to-list 'package-archives					     
@@ -49,28 +59,8 @@ If REPOSITORY is specified, use that."
   :init
   (company-jedi t))
 
-;; Installing powerline
-(use-package      smart-mode-line-powerline-theme
-    :ensure smart-mode-line-powerline-theme)
-  (use-package smart-mode-line
-    :ensure smart-mode-line
-    :init 
-    (progn
-    (setq sml/no-confirm-load-theme t)
-    (sml/setup)
-    (sml/apply-theme 'powerline))
-    )
-
-(use-package smart-mode-line
-  :ensure smart-mode-line
-  :init 
-  (progn
-    (setq sml/no-confirm-load-theme t)
-    (sml/setup)
-    (sml/apply-theme 'powerline)
-    ))
-
-
+;; Taken from Aaron Bieber's Config
+(require 'init-powerline)
 
 ;; Installing markdown-mode
 (sacha/package-install 'markdown-mode)
@@ -144,16 +134,18 @@ On error (read-only), quit without selecting."
 :init
 (global-flycheck-mode t))
 
+;; Installing sanityinc-tomorrow
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init
+  (load-theme 'sanityinc-tomorrow-eighties t))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(frame-background-mode (quote light))
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-    (yasnippet use-package rich-minority markdown-mode helm-swoop flycheck-pyflakes company auto-complete))))
+ '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
