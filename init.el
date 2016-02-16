@@ -89,6 +89,14 @@ If REPOSITORY is specified, use that."
 (auto-complete-mode t)
 ))
 
+;; Installing aggresive-indent
+(use-package aggressive-indent
+:ensure t
+:init (progn
+  (global-aggressive-indent-mode 1)
+)
+)
+
 ;; Installing helm and helm-swoop
 (sacha/package-install 'helm)
 (sacha/package-install 'helm-swoop)
@@ -112,7 +120,8 @@ If REPOSITORY is specified, use that."
       (add-to-list 'helm-completing-read-handlers-alist '(switch-to-buffer . ido)))
 
 (use-package helm-swoop
- :bind (("C-S-s" . helm-swoop)))
+  :bind (("C-S-s" . helm-swoop)))
+
 
 (defun helm-backspace ()
   "Forward to `backward-delete-char'.
@@ -125,11 +134,26 @@ On error (read-only), quit without selecting."
 
 (define-key helm-map (kbd "DEL") 'helm-backspace)
 
+;; Installing tex
+(use-package tex
+:ensure auctex)
+
+;; Installing smartparens
+(use-package smartparens
+:ensure smartparens
+:config 
+(progn
+(require 'smartparens-config)
+(require 'smartparens-html)
+(require 'smartparens-python)
+(require 'smartparens-latex)
+(smartparens-global-mode t)
+))
+
 ;; Special Key Bindings
 (global-set-key (kbd "M-x") 'helm-M-x)	; Basically change M-x to helm-M-x
 (global-set-key (kbd "C-s") 'helm-swoop) ; Basically change C-s to helm-swoop
-
-
+(global-set-key (kbd "C-x C-f") 'helm-find-files) ; Basically change C-s to helm-swoop
 
 ;; Installing flycheck
 (sacha/package-install 'flycheck)
@@ -138,11 +162,22 @@ On error (read-only), quit without selecting."
 :init
 (global-flycheck-mode t))
 
-;; Installing sanityinc-tomorrow
-(use-package color-theme-sanityinc-tomorrow
+;; Installing yasnippet
+(use-package yasnippet
   :ensure t
   :init
-  (load-theme 'sanityinc-tomorrow-eighties t))
+  (progn
+    (yas-global-mode 1)
+    )
+  )
+
+;; Installing dracula-theme
+(use-package dracula-theme
+  :ensure t
+  :init
+  (load-theme 'dracula t))
+
+(setq ns-function-modifier 'control)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
