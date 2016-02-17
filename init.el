@@ -163,13 +163,15 @@ On error (read-only), quit without selecting."
 (global-flycheck-mode t))
 
 ;; Installing yasnippet
+(sacha/package-install 'yasnippet)
 (use-package yasnippet
-  :ensure t
   :init
-  (progn
-    (yas-global-mode 1)
-    )
-  )
+  (yas-global-mode t))
+
+;; Rebinding yasnippet to <C-tab> to not interfere with auto-complete
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
 
 ;; Installing dracula-theme
 (use-package dracula-theme

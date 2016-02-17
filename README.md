@@ -1,1 +1,7 @@
-#My Emacs Configuration
+# My Emacs Configuration
+
+## How to Install
+
+## Credits
+
+

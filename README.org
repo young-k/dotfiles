@@ -1,0 +1,15 @@
+* My Emacs Configuration
+** How To Install
+
+First, make sure you don't have a .emacs file. 
+
+You can back up your .emacs.d directory if you have one by doing ~mv .emacs.d dotemacs~, which will store your configuration in the ~dotemacs~ folder.
+
+To import this configuration, do
+
+#+BEGIN_SRC sh
+git clone https://github.com/young-k/dotemacs.git .emacs.d
+#+END_SRC
+
+** Credits
+- Zamansky who inspired me to start using emacs.
