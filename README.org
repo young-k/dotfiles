@@ -11,5 +11,34 @@ To import this configuration, do
 git clone https://github.com/young-k/dotemacs.git .emacs.d
 #+END_SRC
 
+** Pre-Packages
+Some basic information:
+#+BEGIN_SRC lisp
+(setq user-full-name "Young Kim"
+      user-mail-address "young-k@protonmail.com")
+#+END_SRC
+
+Pickiness:
+#+BEGIN_SRC lisp
+;; Asks "y-or-n" instead of asking "yes-or-no"
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Set font to DejaVu Sans Mono
+;; Mostly for Linux / Windows since DejaVu Sans Mono comes with Mac
+(when (member "DejaVu Sans Mono" (font-family-list))
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
+#+END_SRC
+** My Many Packages
+*** Markdown-Mode
+*** Auto-Complete
+*** Aggressive-Indent
+*** Helm / Helm-Swoop
+*** Tex
+*** Smartparens
+*** Flycheck 
+*** Dracula Theme
+Probably my favorite theme. I run it on both my zsh and my emacs.
 ** Credits
 - Zamansky who inspired me to start using emacs.
+- Sacha who provided package-install.
+- Aaron Bieber for providing a baseline powerline.
