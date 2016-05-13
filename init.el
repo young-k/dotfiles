@@ -69,6 +69,12 @@ If REPOSITORY is specified, use that."
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; Installing jade-mode
+(sacha/package-install 'sws-mode)
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+
 ;; Installing auto-complete
 (sacha/package-install 'auto-complete)
 (use-package auto-complete
