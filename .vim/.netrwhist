@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/Young/Documents/2112_workspace/team-cai29-yk465-final/.git'
+let g:netrw_dirhist_2='/Users/Young/Documents/team-mz282-yk465-malloc/malloc'
+let g:netrw_dirhist_3='/Users/Young/.zprezto'
+let g:netrw_dirhist_4='/Users/Young/.zprezto/modules'
+let g:netrw_dirhist_5='/Users/Young/Documents/Github/resume/moderncv'
+let g:netrw_dirhist_6='/Users/Young/.zprezto'
