@@ -5,10 +5,10 @@ First, make sure you don't have a .emacs file.
 
 You can back up your .emacs.d directory if you have one by doing ~mv .emacs.d dotemacs~, which will store your configuration in the ~dotemacs~ folder.
 
-To import this configuration, do
+To import this configuration, clone the repo and move the dotemacs folder to .emacs.d
 
 #+BEGIN_SRC sh
-git clone https://github.com/young-k/dotemacs.git .emacs.d
+git clone https://github.com/young-k/dotfiles.git ~/dotfiles; mv ~/dotfiles/dotemacs ~/.emacs.d
 #+END_SRC
 
 ** Pre-Packages
