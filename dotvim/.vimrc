@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Packages
 Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 
 " End Vundle
@@ -22,5 +23,4 @@ set shiftwidth=4
 set expandtab
 set laststatus=2
 set number
-nnoremap j gj
-nnoremap k gk
+let mapleader="," " Setting for NERDCommenter
