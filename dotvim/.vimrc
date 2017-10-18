@@ -1,43 +1,44 @@
-" Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" VUNDLE SETTINGS
 set nocompatible
 filetype off   
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" Packages
+" Vundle Packages
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dracula/vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'let-def/ocp-indent-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
 
 " End Vundle
 call vundle#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" GENERAL SETTINGS
 filetype plugin indent on
 syntax on
 colorscheme dracula
+set number
+set laststatus=2
+set autochdir
+
+" indentation
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set laststatus=2
-set number
-set autochdir
-let mapleader="," " Setting for NERDCommenter
+autocmd Filetype ocaml setlocal ts=2 sw=2 expandtab
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" map ctrl-s to save
+nnoremap <c-s> :w<CR> 
+inoremap <c-s> <Esc>:w<CR>l 
+vnoremap <c-s> <Esc>:w<CR> 
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" use ';' instead of ':" 
+nnoremap ; :
 
 " Bindings avoid shift-finger
 command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
@@ -61,3 +62,29 @@ command! -bar -nargs=* -complete=file          -bang Mksession mksession<bang> <
 command! -bar -nargs=* -complete=dir           -bang Cd        cd<bang> <args>
 command! -bar                                        Messages  messages
 command! -bar -nargs=+ -complete=file          -bang Source    source<bang> <args>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGIN SETTINGS
+" Incsearch settings
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_ocaml_checkers = ['merlin']
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ctrl-p settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+" ocaml config
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
