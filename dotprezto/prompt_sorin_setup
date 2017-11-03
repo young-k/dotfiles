@@ -78,9 +78,9 @@ function prompt_sorin_precmd {
 
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    branch_format="(%b%f%u%c%F{3}●%f)"
+    branch_format="[%b%f%u%c%%F{3}●%f]"
   else
-    branch_format="(${_prompt_steeef_colors[1]}%b%f%u%c)"
+    branch_format="[%b%f%c%u]"
   fi
 
   zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
@@ -119,7 +119,7 @@ function prompt_sorin_setup {
   #   %R - repository path
   #   %S - path in the repository
   local branch_format="%b%f%u%c"
-  local action_format="%F{3}%a%f"
+  local action_format="%F{3}●%f"
   local unstaged_format="%F{1}●%f"
   local staged_format="%F{2}●%f"
 
@@ -129,18 +129,8 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{3}♺%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{2}❮%F{3}❮%F{1}❮%f%b'
 
-  # Set vcs_info parameters.
-  zstyle ':vcs_info:*' enable bzr git hg svn
-  zstyle ':vcs_info:*:prompt:*' check-for-changes true
-  zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
-  zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
-  zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
-  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
-  zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
-
   # Define prompts.
-  PROMPT='
-%F{4}%n%f at %F{5}%m%f in %F{6}%~%f ${vcs_info_msg_0_}
+  PROMPT='%F{5}[%F{4}%D{%a-%d} %F{4}%D{%I:%M%p}%F{5}] %F{6}%~%f ${vcs_info_msg_0_} 
 ${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
   RPROMPT=''
   SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '

@@ -30,7 +30,13 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-autocmd Filetype ocaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype ocaml setlocal ts=2 softtabstop=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=2 softtabstop=2 sw=2 expandtab
+
+" make cocoascript javascript highlighting
+augroup filetypedetect
+    au BufRead,BufNewFile *.cocoascript setfiletype javascript
+augroup END
 
 " map ctrl-s to save
 nnoremap <c-s> :w<CR> 
