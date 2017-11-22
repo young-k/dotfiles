@@ -12,6 +12,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'let-def/ocp-indent-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 
 " End Vundle
