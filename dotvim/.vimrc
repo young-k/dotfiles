@@ -11,9 +11,12 @@ Plugin 'dracula/vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'let-def/ocp-indent-vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-syntastic/syntastic'
 
 " End Vundle
 call vundle#end()
@@ -33,6 +36,7 @@ set shiftwidth=4
 set expandtab
 autocmd Filetype ocaml setlocal ts=2 softtabstop=2 sw=2 expandtab
 autocmd Filetype python setlocal ts=2 softtabstop=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 softtabstop=2 sw=2 expandtab
 
 " make cocoascript javascript highlighting
 augroup filetypedetect
@@ -71,27 +75,33 @@ command! -bar                                        Messages  messages
 command! -bar -nargs=+ -complete=file          -bang Source    source<bang> <args>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGIN SETTINGS
-" Incsearch settings
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_ocaml_checkers = ['merlin']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " ctrl-p settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|venv)|(\.(swp|ico|git|svn))$'
+
+" incsearch settings
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = '--rcfile=/Users/Young/dotfiles/.pylintrc'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>r :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " ocaml config
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+" vim-airline settings
+" let g:airline_section_c = '%t'
+
+" vim-jsx
+let g:jsx_ext_required = 0
