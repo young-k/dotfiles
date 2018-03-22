@@ -95,6 +95,7 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " ale
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_enter=0
 let g:ale_python_pylint_options='--rcfile ~/dotfiles/.pylintrc'
 let g:ale_linters = {
 \   'python': ['pylint'],
