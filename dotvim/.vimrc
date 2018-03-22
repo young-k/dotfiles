@@ -16,7 +16,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 
 " End Vundle
 call vundle#end()
@@ -86,22 +86,19 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-" syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_ocaml_checkers = ['merlin']
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '--rcfile=/Users/Young/dotfiles/.pylintrc'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <C-w>r :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
 " ocaml config
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " vim-airline settings
 " let g:airline_section_c = '%t'
+
+" ale
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_pylint_options='--rcfile ~/dotfiles/.pylintrc'
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
 
 " vim-jsx
 let g:jsx_ext_required = 0
