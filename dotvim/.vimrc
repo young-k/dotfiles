@@ -75,6 +75,14 @@ command! -bar                                        Messages  messages
 command! -bar -nargs=+ -complete=file          -bang Source    source<bang> <args>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" PLUGIN SETTINGS
+" ale
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_enter=0
+let g:ale_python_pylint_options='--rcfile ~/dotfiles/.pylintrc'
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
+
 " ctrl-p settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -86,20 +94,15 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+" nerdtree
+let NERDTreeShowHidden=1
+
 " ocaml config
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " vim-airline settings
 " let g:airline_section_c = '%t'
-
-" ale
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_enter=0
-let g:ale_python_pylint_options='--rcfile ~/dotfiles/.pylintrc'
-let g:ale_linters = {
-\   'python': ['pylint'],
-\}
 
 " vim-jsx
 let g:jsx_ext_required = 0
