@@ -30,14 +30,16 @@ set cursorline
 set laststatus=2
 set autochdir
 
+" spell checking
+autocmd FileType markdown setlocal spell
+hi clear SpellBad
+hi SpellBad cterm=underline
+
 " indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
-autocmd Filetype ocaml setlocal ts=2 softtabstop=2 sw=2 expandtab
-autocmd Filetype python setlocal ts=2 softtabstop=2 sw=2 expandtab
-autocmd Filetype javascript setlocal ts=2 softtabstop=2 sw=2 expandtab
 
 " make cocoascript javascript highlighting
 augroup filetypedetect
@@ -107,3 +109,9 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM COMMANDS
+command Notrails :%s/\s\+$//e
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""" PROJECT SPECIFIC CONFIGS
+autocmd BufRead,BufNewFile /Users/Young/Documents/quickframe/lumiere/* setlocal ts=4 sw=4

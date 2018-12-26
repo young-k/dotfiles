@@ -26,6 +26,7 @@ alias gaa='git add --all'
 alias venv='source venv/bin/activate'
 alias py='python'
 alias runserver='python manage.py runserver 0.0.0.0:8000'
+alias dir='pwd | pbcopy'
 
 # alias google chrome
 alias chrome='open -a "Google Chrome"' 
