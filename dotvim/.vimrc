@@ -90,7 +90,7 @@ let g:ale_linters = {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|venv)|(\.(swp|ico|git|svn|class))$'
+let g:ctrlp_custom_ignore = '\v[\/](dist|node_modules|__pycache__|target|venv)|(\.(swp|pyc|ico|git|svn|class))$'
 
 " incsearch settings
 map /  <Plug>(incsearch-forward)
@@ -112,6 +112,10 @@ let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM COMMANDS
 command Notrails :%s/\s\+$//e
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""" AUTO COMPLETE
+ab c( console.log();<esc>hi
+ab p( print()<esc>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""" PROJECT SPECIFIC CONFIGS
 autocmd BufRead,BufNewFile /Users/Young/Documents/quickframe/lumiere/* setlocal ts=4 sw=4
