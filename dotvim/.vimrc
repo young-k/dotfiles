@@ -91,7 +91,7 @@ let g:ale_linters = {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/](dist|node_modules|__pycache__|pg_data|target|venv)|(\.(swp|pyc|ico|git|svn|class))$'
+let g:ctrlp_custom_ignore = '\v[\/](dist|node_modules|__pycache__|pg_data|target|venv)|(\.(swp|pyc|ico|git|svn|class))$
 
 " incsearch settings
 map /  <Plug>(incsearch-forward)
@@ -120,4 +120,3 @@ ab p( print()<esc>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""" PROJECT SPECIFIC CONFIGS
 autocmd BufRead,BufNewFile /Users/Young/Documents/quickframe/lumiere/* setlocal ts=4 sw=4
-autocmd BufRead,BufNewFile /Users/Young/Documents/sentiment-analysis/* setlocal ts=2 sw=2
