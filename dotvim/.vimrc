@@ -7,7 +7,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Vundle Packages
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'dracula/vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'let-def/ocp-indent-vim'
@@ -17,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'w0rp/ale'
+Plugin 'young-k/dracula-vim'
 Plugin 'young-k/todos'
 
 " End Vundle

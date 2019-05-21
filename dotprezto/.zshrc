@@ -10,6 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# proper newlines
+precmd() { echo }
+
 # Customize to your needs...
 alias ll='ls -alF'
 alias la='ls -A'
