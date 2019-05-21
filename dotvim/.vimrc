@@ -27,7 +27,6 @@ filetype plugin indent on
 syntax on
 colorscheme dracula
 set number
-set cursorline
 set laststatus=2
 set autochdir
 
@@ -91,7 +90,7 @@ let g:ale_linters = {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/](dist|node_modules|__pycache__|pg_data|target|venv)|(\.(swp|pyc|ico|git|svn|class))$
+let g:ctrlp_custom_ignore = '\v[\/](dist|node_modules|__pycache__|pg_data|target|venv)|(\.(swp|pyc|ico|git|svn|class))$'
 
 " incsearch settings
 map /  <Plug>(incsearch-forward)

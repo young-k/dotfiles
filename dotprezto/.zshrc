@@ -39,9 +39,6 @@ alias ssh-analytics='ssh -i ~/Downloads/young-key.pem ec2-user@analytics-dev3.qu
 alias ssh-pixelcode='ssh -i ~/Documents/pixelcode.pem ubuntu@34.205.105.8'
 alias ssh-website='ssh -i ~/Documents/pixelcode.pem ubuntu@184.72.112.66'
 
-# proper newlines
-precmd() { echo }
-
 # OPAM configuration
 . /Users/Young/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
@@ -53,6 +50,9 @@ setopt noflowcontrol
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
