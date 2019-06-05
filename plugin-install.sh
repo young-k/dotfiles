@@ -11,8 +11,8 @@ echo 'Copying global gitignore...'
 cp -f ~/dotfiles/.gitignore_global ~/.gitignore_global
 
 echo 'Copying zsh configs...'
-cp -f ~/dotfiles/.zpreztorc ~/.zpreztorc
-cp -f ~/dotfiles/.zshrc ~/.zshrc
+cp -f ~/dotfiles/dotprezto/.zpreztorc ~/.zpreztorc
+cp -f ~/dotfiles/dotprezto/.zshrc ~/.zshrc
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 source ~/.bashrc
