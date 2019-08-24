@@ -8,6 +8,7 @@ brew install direnv
 brew install git
 brew install nvm
 brew install python3
+brew install tmux
 brew install wget
 brew install zsh zsh-completions
 
