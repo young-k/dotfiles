@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" VUNDLE SETTINGS
 set nocompatible
-filetype off   
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -48,11 +48,11 @@ augroup filetypedetect
 augroup END
 
 " map ctrl-s to save
-nnoremap <c-s> :w<CR> 
-inoremap <c-s> <Esc>:w<CR>l 
-vnoremap <c-s> <Esc>:w<CR> 
+nnoremap <c-s> :w<CR>
+inoremap <c-s> <Esc>:w<CR>l
+vnoremap <c-s> <Esc>:w<CR>
 
-" use ';' instead of ':" 
+" use ';' instead of ':"
 nnoremap ; :
 
 " Bindings avoid shift-finger
@@ -112,7 +112,13 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" CUSTOM COMMANDS
-command Notrails :%s/\s\+$//e
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""" AUTO COMPLETE
 ab c( console.log();<esc>hi
