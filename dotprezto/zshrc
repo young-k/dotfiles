@@ -1,1 +1,65 @@
-/Users/youngkim/.zprezto/runcoms/zshrc
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Young Kim <kim.thunderbird@gmail.com
+#   with inspiration from Sorin Ionescu
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# proper newlines
+precmd() { echo }
+
+# Customize to your needs...
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias rm='rm -f'
+alias gdiff='git diff --no-index'
+
+# Git aliases
+alias gp='git push'
+alias gc='git commit'
+alias gaa='git add --all'
+
+# dev
+alias venv='source venv/bin/activate'
+alias py='python'
+alias runserver='python manage.py runserver 0.0.0.0:8000'
+alias dir='pwd | pbcopy'
+
+# alias google chrome
+alias chrome='open -a "Google Chrome"'
+alias safari='open -a "Safari"'
+alias gapplin='open -a "Gapplin"'
+
+# alias quickframe
+alias ssh-qf='ssh -i ~/Downloads/young-key.pem ec2-user@52.5.75.219'
+alias ssh-analytics='ssh -i ~/Downloads/young-key.pem ec2-user@analytics-dev3.quickframe.com'
+alias ssh-pixelcode='ssh -i ~/Documents/pixelcode.pem ubuntu@34.205.105.8'
+alias ssh-website='ssh -i ~/Documents/pixelcode.pem ubuntu@184.72.112.66'
+
+# OPAM configuration
+. /Users/Young/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# enable control-s and control-q
+stty start undef
+stty stop undef
+setopt noflowcontrol
+
+# autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+if [ "$TMUX" = "" ]; then tmux; fi
