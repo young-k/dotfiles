@@ -1,7 +1,7 @@
 cd ~
 
 echo 'Copying bash configs...'
-cp -f ~/dotfiles/bashrc ~/.bashrc
+cp -f ~/dotfiles/.bashrc ~/.bashrc
 
 echo 'Copying vim configs...'
 cp -Rf ~/dotfiles/dotvim/.vim ~/.vim
